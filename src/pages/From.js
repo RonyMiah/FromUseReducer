@@ -1,55 +1,9 @@
 import React, { useReducer } from 'react';
+import { initialState, reducer } from '../state/fromReducer';
 
 const From = () => {
 
-    const initialState ={
-        firstName : "",
-        lastName :"",
-        email :"",
-        gender:"",
-        education:"",
-        quantity: 0,
-        feedback: "",
-        term: false
-    };
-    const reducer = (state, action) =>{
-        
-        switch(action.type){
-            case "INPUT" :
-                return {
-                    ...state,
-                    //scqure braket Notation 
-                    [action.payload.name]:action.payload.value,
-                }
-             case "TOGGLE" : 
-             return{
-                ...state ,
-                term : !state.term
-             }  
-
-             case "INCREMENT" : 
-             return {
-                ...state,
-                quantity: state.quantity + action.payload
-             }
-             
-
-             case "DECREMENT" : 
-             return {
-                ...state,
-                quantity: state.quantity - action.payload
-             }
-                
-                
-                default : return state ;
-        }
-      
-        
-    };
-
 const [state , dispatch] = useReducer(reducer, initialState);
-
-
 
 
 const submit =(event) => {
